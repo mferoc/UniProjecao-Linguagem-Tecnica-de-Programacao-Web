@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./modelo.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h1>Novo Time</h1>
+        <script type="text/javascript">
+            function limpar() {
+                document.timeform.reset();
+            }
+        </script>
+        <h:form id="timeform">
+            <h:panelGrid columns="2" cellpadding="5">
+                Nome: 
+                <p:inputText id="nome" value="#{bean.camp.tm.nome}" size="20" maxlength="128" required="true">
+                </p:inputText>
+                Sigla: 
+                <p:inputText id="sigla"  value="#{bean.camp.tm.sigla}" size="20" maxlength="3" required="true" onkeyup="this.value = this.value.toUpperCase();">
+                </p:inputText>
+                Data de Fundação: 
+                <p:inputMask mask="99/99/9999" id="fundacao" value="#{bean.camp.tm.fundacao}" size="20" maxlength="12" required="true">
+                </p:inputMask>
+                Presidente: 
+                <p:inputText id="presidente" value="#{bean.camp.tm.presidente}" size="20" maxlength="256" required="true">
+                </p:inputText>
+                Vice-Presidente 
+                <p:inputText id="vice" value="#{bean.camp.tm.vice}" size="20" maxlength="256" required="true">
+                </p:inputText>
+            </h:panelGrid>
+
+            <p:commandButton value="Cadastrar" action="#{bean.inserirTime()}" oncomplete="limpar()" />
+        </h:form>
+    </ui:define>
+
+</ui:composition>

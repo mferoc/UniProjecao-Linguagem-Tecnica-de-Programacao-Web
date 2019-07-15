@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Cadastro de Cursos | Atividade 2</title>
+    </h:head>
+    <h:body>
+        <h1 align="center">Cadastro de Cursos</h1>
+        <br />
+        <h:form id="formulario">
+            <h:panelGrid columns="2" cellpadding="5">
+                Código: <h:inputText id="codigo" value="#{bean.crs.cod}" size="20" maxlength="128" >
+                </h:inputText>
+                Nome: <h:inputText id="nome" value="#{bean.crs.nome}" size="20" maxlength="128" >
+                </h:inputText>
+                Categoria: <h:inputText id="categoria" value="#{bean.crs.categoria}" size="20" maxlength="128" >
+                </h:inputText>
+                Carga horária: <h:inputText id="carga" value="#{bean.crs.carga}" size="20" maxlength="128" >
+                </h:inputText>
+                Preço: <h:inputText id="preco" value="#{bean.crs.preco}" size="20" maxlength="128" >
+                </h:inputText>
+            </h:panelGrid>
+            <p:commandButton value="Salvar" id="salvar" action="#{bean.cadastrar()}" update="@form"   />
+            <p:spacer></p:spacer>
+            <p:commandButton value="Pesquisar" id="pesquisar" action="#{bean.pesquisar()}"  update="@form" />
+            <p:spacer></p:spacer>
+            <p:commandButton value="Excluir" id="excluir" action="#{bean.excluir()}"  update="@form" />
+            <p:spacer></p:spacer>
+            <p:commandButton value="Atualizar" id="atualizar" action="#{bean.editar()}"  update="@form" />
+            <p:messages for="pesquisar" autoUpdate="true" id="messages" showDetail="true" closable="true"> </p:messages>
+            <br/>
+            <p:dataTable id="grade" value="#{bean.listaCS}" var="cursos"
+                         emptyMessage="Nenhum curso"
+                         paginator="true"
+                         paginatorPosition="bottom"
+                         rows="7">
+                <p:column headerText="Código">
+                    <p:outputLabel value="#{cursos.cod}" />
+                </p:column>
+                <p:column headerText="Nome">
+                    <p:outputLabel value="#{cursos.nome}" />
+                </p:column>
+                <p:column headerText="Categoria">
+                    <p:outputLabel value="#{cursos.categoria}" />
+                </p:column>
+                <p:column headerText="Carga">
+                    <p:outputLabel value="#{cursos.carga}" />
+                </p:column>
+                <p:column headerText="Preço">
+                    <p:outputLabel value="#{cursos.preco}" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

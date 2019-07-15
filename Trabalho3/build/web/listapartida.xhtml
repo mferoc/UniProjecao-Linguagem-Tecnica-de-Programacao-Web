@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./modelo.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h1>Relatório de Partidas</h1>
+        <p:dataTable id="grade" value="#{bean.listaCampPartidas}" var="partida"
+                     emptyMessage="Nenhuma partida"
+                     paginator="true"
+                     paginatorPosition="bottom"
+                     rows="12"
+                     sortBy="#{partida.ptd.data}"
+                     sortOrder="descending"
+                     >
+            <p:column headerText="Data">
+                <p:outputLabel value="#{partida.ptd.data}" />
+            </p:column>    
+            <p:column headerText="Time da Casa">
+                <p:outputLabel value="#{partida.ptd.casa}" />
+            </p:column>
+            <p:column headerText="Time Visitante">
+                <p:outputLabel value="#{partida.ptd.visitante}" />
+            </p:column>
+            <p:column headerText="Estádio">
+                <p:outputLabel value="#{partida.ptd.estadio}" />
+            </p:column>
+            <p:column headerText="Estado">
+                <p:outputLabel value="#{partida.ptd.estado}" />
+            </p:column>
+            <p:column headerText="Cidade">
+                <p:outputLabel value="#{partida.ptd.cidade}" />
+            </p:column>
+            <p:column headerText="Gols do Time da Casa">
+                <p:outputLabel value="#{partida.ptd.golsCasa}" />
+            </p:column>
+            <p:column headerText="Gols do Time Visitante">
+                <p:outputLabel value="#{partida.ptd.golsVisitante}" />
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+
+</ui:composition>
